@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>外国人向け文字変換アプリ</title>
+
+<style>
+    body {
+        font-family: serif;
+        padding: 20px;
+        background: repeating-linear-gradient(
+            -45deg,
+            #ffdde1,
+            #ffdde1 20px,
+            #ff6f91 20px,
+            #ff6f91 40px
+        ), url("heart_wave.png");
+        color: #ff1493;
+    }
+
+    h1 {
+        font-size: 40px;
+        text-shadow: 3px 3px #fff;
+        color: #ff0000;
+    }
+
+    label {
+        font-size: 20px;
+    }
+
+    .container {
+        margin-bottom: 20px;
+    }
+
+    input, textarea {
+        width: 100%;
+        padding: 10px;
+        border: 3px solid #ff69b4;
+        background: #fff0f6;
+        font-family: serif;
+        font-size: 18px;
+        color: #1e90ff;
+    }
+
+    button {
+        padding: 10px 20px;
+        font-size: 20px;
+        background: #ff1493;
+        color: white;
+        border: none;
+        cursor: pointer;
+        border-radius: 8px;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 30px;
+        background: white;
+    }
+
+    th, td {
+        border: 2px solid #ff69b4;
+        padding: 10px;
+        text-align: center;
+        font-size: 18px;
+    }
+
+</style>
+</head>
+
+<body>
+<h1>💕 外国人向けひらがな → ローマ字 変換アプリ 💕</h1>
+
+<div class="container">
+    <label>ひらがな入力：</label>
+    <input type="text" id="hiraganaInput" placeholder="ひらがなを入力してください">
+</div>
+
+<div class="container">
+    <label>ローマ字出力：</label>
+    <textarea id="output" readonly></textarea>
+</div>
+
+<button onclick="convert()">変換する</button>
+
+<table id="historyTable">
+    <tr>
+        <th>ひらがな</th>
+        <th>ローマ字</th>
+    </tr>
+</table>
+
+<script>
+    // 簡易JS版ローマ字変換（本番はJavaのAPIと連携）
+    const map = {
+        "あ": "a", "い": "i", "う": "u", "え": "e", "お": "o",
+        "か": "ka", "き": "ki", "く": "ku", "け": "ke", "こ": "ko",
+        "さ": "sa", "し": "shi", "す": "su", "せ": "se", "そ": "so",
+        "た": "ta", "ち": "chi", "つ": "tsu", "て": "te", "と": "to",
+        "な": "na", "に": "ni", "ぬ": "nu", "ね": "ne", "の": "no",
+        "は": "ha", "ひ": "hi", "ふ": "fu", "へ": "he", "ほ": "ho",
+        "ま": "ma", "み": "mi", "む": "mu", "め": "me", "も": "mo",
+        "や": "ya", "ゆ": "yu", "よ": "yo",
+        "ら": "ra", "り": "ri", "る": "ru", "れ": "re", "ろ": "ro",
+        "わ": "wa", "を": "wo", "ん": "n"
+    };
+
+    function convert() {
+        const input = document.getElementById("hiraganaInput").value;
+        let result = "";
+
+        for (let c of input) {
+            if (map[c]) {
+                result += map[c];
+            } else {
+                result += "[?" + c + "]"; // default処理
+            }
+        }
+
+        document.getElementById("output").value = result;
+
+        // 履歴テーブルに追加
+        const table = document.getElementById("historyTable");
+        const row = table.insertRow(-1);
+        row.insertCell(0).innerText = input;
+        row.insertCell(1).innerText = result;
+    }
+</script>
+
+</body>
+</html>

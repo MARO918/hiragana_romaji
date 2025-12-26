@@ -1,0 +1,61 @@
+    body {
+        font-family: serif;
+        padding: 20px;
+        background: repeating-linear-gradient(
+            -45deg,
+            #ffdde1,
+            #ffdde1 20px,
+            #ff6f91 20px,
+            #ff6f91 40px
+        ), url("heart_wave.png");
+        color: #ff1493;
+    }
+
+    h1 {
+        font-size: 40px;
+        text-shadow: 3px 3px #fff;
+        color: #ff0000;
+    }
+
+    label {
+        font-size: 20px;
+    }
+
+    .container {
+        margin-bottom: 20px;
+    }
+
+    input, textarea {
+        width: 100%;
+        padding: 10px;
+        border: 3px solid #ff69b4;
+        background: #fff0f6;
+        font-family: serif;
+        font-size: 18px;
+        color: #1e90ff;
+    }
+
+    button {
+        padding: 10px 20px;
+        font-size: 20px;
+        background: #ff1493;
+        color: white;
+        border: none;
+        cursor: pointer;
+        border-radius: 8px;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 30px;
+        background: white;
+    }
+
+    th, td {
+        border: 2px solid #ff69b4;
+        padding: 10px;
+        text-align: center;
+        font-size: 18px;
+    }
+
